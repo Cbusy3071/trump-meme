@@ -661,10 +661,20 @@ button:focus-visible {
         clearTyping();renderEvent(item);
         await pauseFor(item.who==='them'?420:300);
       } else {
-        await pauseFor(item.type==='voice'?10000:450);
-        if(run!==sceneGeneration)return;
-        renderEvent(item);
-      }
+  if (item.type === 'voice') {
+    sceneTyping('them');
+  }
+
+  await pauseFor(item.type === 'voice' ? 10000 : 450);
+
+  if (run !== sceneGeneration) return;
+
+  if (item.type === 'voice') {
+    clearTyping();
+  }
+
+  renderEvent(item);
+}
     }
     if(run===sceneGeneration)sceneComplete();
   }
