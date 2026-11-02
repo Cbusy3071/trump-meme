@@ -649,19 +649,19 @@ button:focus-visible {
     clearScene();
     const run=sceneGeneration;
     sceneRunning=true;
-    await pauseFor(650);
+    await pauseFor(8000);
     for(let i=0;i<sequence.length;i++){
       if(run!==sceneGeneration)return;
       const item=sequence[i];
       if(item.who){
         sceneTyping(item.who);
-        const typingMs=item.who==='them' ? Math.min(1450,650+item.text.length*8) : Math.min(970,350+item.text.length*6);
+        const typingMs=item.who==='them' ? Math.min(4000,1100+item.text.length*8) : Math.min(2500,350+item.text.length*6);
         await pauseFor(typingMs);
         if(run!==sceneGeneration)return;
         clearTyping();renderEvent(item);
         await pauseFor(item.who==='them'?420:300);
       } else {
-        await pauseFor(item.type==='voice'?800:450);
+        await pauseFor(item.type==='voice'?10000:450);
         if(run!==sceneGeneration)return;
         renderEvent(item);
       }
